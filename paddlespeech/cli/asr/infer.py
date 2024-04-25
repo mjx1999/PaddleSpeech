@@ -52,8 +52,10 @@ class ASRExecutor(BaseExecutor):
         self.parser.add_argument(
             '--model',
             type=str,
-            default='conformer_u2pp_online_wenetspeech',
-            choices=[
+#            default='conformer_u2pp_online_wenetspeech',  #这个模型 执行  paddlespeech  asr --lang zh --input zh.wav 报参数错误
+# 以下根据 https://github.com/PaddlePaddle/PaddleSpeech/blob/develop/demos/speech_recognition/README_cn.md 
+# 修正模型默认为 conformer_wenetspeech 
+            default='conformer_wenetspeech',            choices=[
                 tag[:tag.index('-')]
                 for tag in self.task_resource.pretrained_models.keys()
             ],
